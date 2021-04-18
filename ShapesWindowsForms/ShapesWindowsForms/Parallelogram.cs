@@ -27,7 +27,8 @@ namespace ShapesWindowsForms
 
         public override void Paint(Graphics g)
         {
-            throw new NotImplementedException();
+            using (var pen = new Pen(Color.Blue, 3))
+                g.DrawRectangle(pen, Location.X, Location.Y, A, B);
         }
     }
 }

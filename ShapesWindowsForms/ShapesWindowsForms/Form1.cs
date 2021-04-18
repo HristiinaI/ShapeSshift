@@ -38,14 +38,19 @@ namespace ShapesWindowsForms
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            for (int i = _shapes.Count(); i >= 0; i--)
+            {
+                _shapes[i].Paint(e.Graphics);
+            }
+
             //var c = new Circle(100, new Point(50, 50));
             //var shape = new Shape(c.Radius, c.Location);
 
             //c.Paint(e.Graphics);
             
-            var t = new Triangle(6, 10, new Point(10, 10), new Point(100, 10), 
-                new Point(50, 100));
-            t.Paint(e.Graphics);
+            //var t = new Triangle(6, 10, new Point(10, 10), new Point(100, 10), 
+            //    new Point(50, 100));
+            //t.Paint(e.Graphics);
         }
 
 

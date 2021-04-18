@@ -10,25 +10,24 @@ namespace ShapesWindowsForms
     class Square : Shape
     {
 
-        public Square(float a, float b, Point squareLocation)
+        public Square(float a, Point squareLocation)
         {
             A = a;
-            B = b;
             SquareLocation = squareLocation;
         }
 
         public Point SquareLocation { get; set; }
         public float A { get; set; }
-        public float B { get; set; }
 
         public override float CalculateSurface()
         {
-            return A * B;
+            return A * A;
         }
 
         public override void Paint(Graphics g)
         {
-            throw new NotImplementedException();
+            using (var pen = new Pen(Color.Blue, 3))
+                g.DrawRectangle(pen, Location.X, Location.Y, A, A);
         }
     }
 }
