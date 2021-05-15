@@ -7,3 +7,4 @@ C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\ShapeSshift\ShapesWindows
 C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\bin\Debug\ShapesWindowsForms.pdb
 C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\obj\Debug\ShapesWindowsForms.exe
 C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\obj\Debug\ShapesWindowsForms.pdb
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\obj\Debug\ShapesWindowsForms.Form1.resources

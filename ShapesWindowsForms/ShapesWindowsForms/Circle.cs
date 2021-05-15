@@ -9,26 +9,31 @@ namespace ShapesWindowsForms
 {
     class Circle : Shape
     {
-        public Circle(float radius, Point circleLocation)
-        {
-            Radius = radius;
-            CircleLocation = circleLocation;
-        }
-
         public Point CircleLocation { get; set; }
 
         public float Radius { get; set; }
 
-        public override float CalculateSurface()
+        public Color CircleColor { get; set; }
+
+        protected override float CalculateSurface()
         {
-            return Radius;
+            return (float)(2 * Math.PI * Radius);
+        }
+
+        protected override float CalculateArea()
+        {
+            return (float)Math.PI * Radius * Radius;
         }
 
         public override void Paint(Graphics g)
         {
+            using (var brush = new SolidBrush(Color.LightBlue))
+                g.FillEllipse(brush, CircleLocation.X, CircleLocation.Y,
+                     Radius + Radius, Radius + Radius);
+
             using (var pen = new Pen(Color.Blue, 3))
             {
-                g.DrawEllipse(pen, Location.X, Location.Y,
+                g.DrawEllipse(pen, CircleLocation.X, CircleLocation.Y,
                      Radius + Radius, Radius + Radius);
             }
         }

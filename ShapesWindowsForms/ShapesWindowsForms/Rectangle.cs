@@ -7,30 +7,31 @@ using System.Threading.Tasks;
 
 namespace ShapesWindowsForms
 {
-    class Square : Shape
+    class Rectangle : Shape
     {
-        public Point SquareLocation { get; set; }
+        public Point RecLocation { get; set; }
         public float A { get; set; }
-        public Color SquareColor { get; set; }
+        public float B { get; set; }
+        public Color RectangleColor { get; set; }
 
         protected override float CalculateSurface()
         {
-            return 4 * A;
-
+            return (2 * A) + (2 * B);
         }
 
         protected override float CalculateArea()
         {
-            return A * A;
+            return A * B;
         }
 
         public override void Paint(Graphics g)
         {
             using (var brush = new SolidBrush(Color.LightBlue))
-                g.FillRectangle(brush, SquareLocation.X, SquareLocation.Y, A, A);
-
+                g.FillRectangle(brush, RecLocation.X, RecLocation.Y, A, B);
             using (var pen = new Pen(Color.Blue, 3))
-                g.DrawRectangle(pen, SquareLocation.X, SquareLocation.Y, A, A);
+                g.DrawRectangle(pen, RecLocation.X, RecLocation.Y, A, B);         
         }
+
+
     }
 }

@@ -9,33 +9,28 @@ namespace ShapesWindowsForms
 {
     class Triangle : Shape
     {
-        public Triangle(float h, float a, Point pt1, Point pt2, Point pt3)
+        public Point TriLocation { get; set; }
+        public float A { get; set; }
+        public float B { get; set; }
+        public float C { get; set; }
+        public Color TriColor { get; set; }
+
+        protected override float CalculateSurface()
         {
-            H = h;
-            A = a;
-            Pt1 = pt1;
-            Pt2 = pt2;
-            Pt3 = pt3;
+            return A + B + C;
         }
 
-        public Point Pt1 { get; set; }
-        public Point Pt2 { get; set; }
-        public Point Pt3 { get; set; }
-
-
-        public float H { get; set; }
-        public float A { get; set; }
-
-
-        public override float CalculateSurface()
+        protected override float CalculateArea()
         {
-            return (H * A) / 2;
+            float halfArea = CalculateSurface() / 2;
+            return (float)Math.Sqrt(halfArea * (halfArea - A) * (halfArea - B) 
+                            * (halfArea - C));
+ 
         }
 
         public override void Paint(Graphics g)
         {
-            Point[] points = { Pt1, Pt2, Pt3 };
-            g.DrawPolygon(new Pen(Color.Blue), points);
+            
         }
     }
 }
