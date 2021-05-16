@@ -9,27 +9,49 @@ namespace ShapesWindowsForms
 {
     class Rectangle : Shape
     {
-        public Point RecLocation { get; set; }
-        public float A { get; set; }
-        public float B { get; set; }
-        public Color RectangleColor { get; set; }
+        public float Width { get; set; }
+        public float Height { get; set; }
 
         protected override float CalculateSurface()
         {
-            return (2 * A) + (2 * B);
+            return (2 * Width) + (2 * Height);
         }
 
         protected override float CalculateArea()
         {
-            return A * B;
+            return Width * Height;
         }
 
         public override void Paint(Graphics g)
         {
-            using (var brush = new SolidBrush(Color.LightBlue))
-                g.FillRectangle(brush, RecLocation.X, RecLocation.Y, A, B);
-            using (var pen = new Pen(Color.Blue, 3))
-                g.DrawRectangle(pen, RecLocation.X, RecLocation.Y, A, B);         
+            if (Fill)
+            {
+                var fillColor = Color.FromArgb(
+                    100,
+                    Color);
+
+                using (var brush = new SolidBrush(fillColor))
+                    g.FillRectangle(brush, Location.X, Location.Y, Width, Height);
+            }
+
+            using (var pen = new Pen(Color, 3))
+                g.DrawRectangle(pen, Location.X, Location.Y, Width, Height);         
+        }
+
+        public override bool Contains(Point p)
+        {
+            return
+                ((Location.X < p.X) && (p.X < Location.X + Width)) &&
+                ((Location.Y < p.Y) && (p.Y < Location.Y + Height));
+        }
+
+        public bool Intersets(Rectangle rectengle)
+        {
+            return
+                    this.Location.X < rectengle.Location.X + rectengle.Width &&
+                    rectengle.Location.X < this.Location.X + this.Width &&
+                    this.Location.Y < rectengle.Location.Y + rectengle.Height &&
+                    rectengle.Location.Y < this.Location.Y + this.Height;
         }
 
 

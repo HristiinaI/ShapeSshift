@@ -9,11 +9,7 @@ namespace ShapesWindowsForms
 {
     class Circle : Shape
     {
-        public Point CircleLocation { get; set; }
-
         public float Radius { get; set; }
-
-        public Color CircleColor { get; set; }
 
         protected override float CalculateSurface()
         {
@@ -27,16 +23,28 @@ namespace ShapesWindowsForms
 
         public override void Paint(Graphics g)
         {
-            using (var brush = new SolidBrush(Color.LightBlue))
-                g.FillEllipse(brush, CircleLocation.X, CircleLocation.Y,
-                     Radius + Radius, Radius + Radius);
-
-            using (var pen = new Pen(Color.Blue, 3))
+            if (Fill)
             {
-                g.DrawEllipse(pen, CircleLocation.X, CircleLocation.Y,
+                var fillColor = Color.FromArgb(
+                    100,
+                    Color);
+                using (var brush = new SolidBrush(fillColor))
+                    g.FillEllipse(brush, Location.X, Location.Y,
+                         Radius + Radius, Radius + Radius);
+            }
+
+            using (var pen = new Pen(Color, 3))
+            {
+                g.DrawEllipse(pen, Location.X, Location.Y,
                      Radius + Radius, Radius + Radius);
             }
         }
+
+        public override bool Contains(Point p)
+        {
+            return true;
+        }
+
 
         //public override string ToString()
         //{

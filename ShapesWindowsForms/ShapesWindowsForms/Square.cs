@@ -9,9 +9,7 @@ namespace ShapesWindowsForms
 {
     class Square : Shape
     {
-        public Point SquareLocation { get; set; }
         public float A { get; set; }
-        public Color SquareColor { get; set; }
 
         protected override float CalculateSurface()
         {
@@ -26,11 +24,33 @@ namespace ShapesWindowsForms
 
         public override void Paint(Graphics g)
         {
-            using (var brush = new SolidBrush(Color.LightBlue))
-                g.FillRectangle(brush, SquareLocation.X, SquareLocation.Y, A, A);
+            if (Fill)
+            {
+                var fillColor = Color.FromArgb(
+                    100,
+                    Color);
+                using (var brush = new SolidBrush(fillColor))
+                g.FillRectangle(brush, Location.X, Location.Y, A, A);
+            }
 
-            using (var pen = new Pen(Color.Blue, 3))
-                g.DrawRectangle(pen, SquareLocation.X, SquareLocation.Y, A, A);
+            using (var pen = new Pen(Color, 3))
+                g.DrawRectangle(pen, Location.X, Location.Y, A, A);
+        }
+
+        public override bool Contains(Point p)
+        {
+            return
+                Location.X < p.X && p.X < Location.X + A &&
+                Location.Y < p.Y && p.Y < Location.Y + A;
+        }
+
+        public bool Intersets(Square square)
+        {
+            return
+                    this.Location.X < square.Location.X + square.A &&
+                    square.Location.X < this.Location.X + this.A &&
+                    this.Location.Y < square.Location.Y + square.A &&
+                    square.Location.Y < this.Location.Y + this.A        ;
         }
     }
 }

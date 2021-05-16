@@ -9,11 +9,9 @@ namespace ShapesWindowsForms
 {
     class Triangle : Shape
     {
-        public Point TriLocation { get; set; }
         public float A { get; set; }
         public float B { get; set; }
         public float C { get; set; }
-        public Color TriColor { get; set; }
 
         protected override float CalculateSurface()
         {
@@ -32,5 +30,11 @@ namespace ShapesWindowsForms
         {
             
         }
+
+        public override bool Contains(Point p)
+        {
+            return true;
+        }
+
     }
 }

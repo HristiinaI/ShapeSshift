@@ -9,13 +9,20 @@ namespace ShapesWindowsForms
 {
     abstract class Shape
     {
-        protected Point Location { get; set; }
+        public Point Location { get; set; }
+
+        public Color Color { get; set; }
+
+        public bool Fill { get; set; } = true;
 
         protected abstract float CalculateSurface();
 
         protected abstract float CalculateArea();
 
         public abstract void Paint(Graphics g);
+
+        public abstract bool Contains(Point p);
+
 
     }
 }
