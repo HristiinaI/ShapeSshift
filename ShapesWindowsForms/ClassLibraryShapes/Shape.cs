@@ -5,13 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShapesWindowsForms
+namespace tu.shapes.ClassLibraryShapes
 {
-    abstract class Shape
+    [Serializable]
+
+    public abstract class Shape
     {
+        private float _width;
+
         public Point Location { get; set; }
 
-        public float Width { get; set; }
+        public float Width
+        {
+            get => _width;
+
+            set
+            {
+                if(value < 0)
+                {
+                    throw new InvalidValueExeption("Negative value not allowed!!");
+                }
+
+                _width = value;
+            }
+        }
         public float Height { get; set; }
 
         public float Radius { get; set; }
@@ -26,7 +43,7 @@ namespace ShapesWindowsForms
 
         public abstract float CalculateArea();
 
-        public abstract void Paint(Graphics g);
+        public abstract void Paint(IGraphics g);
 
         public abstract bool Intersets(Shape shape);
 

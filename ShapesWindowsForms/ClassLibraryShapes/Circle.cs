@@ -6,9 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShapesWindowsForms
+namespace tu.shapes.ClassLibraryShapes
 {
-    class Circle : Shape
+    [Serializable]
+
+    public class Circle : Shape
     {
 
         protected override float CalculateSurface()
@@ -21,30 +23,26 @@ namespace ShapesWindowsForms
             return (float)Math.PI * Radius * Radius;
         }
 
-        public override void Paint(Graphics g)
+        public override void Paint(IGraphics g)
         {
-            var borderColor = Selected
+            var color = Selected
                 ? Color.Red
                 : Color;
-            if (Fill)
-            {
-                using (var brush = new SolidBrush(Color))
-                    g.FillEllipse(brush, Location.X, Location.Y,
-                         Radius + Radius, Radius + Radius);
-            }
-
-            using (var pen = new Pen(borderColor, 3))
-            {
-                g.DrawEllipse(pen, Location.X, Location.Y,
-                     Radius + Radius, Radius + Radius);
-            }
+            g.DrawCircle(
+                color,
+                Fill
+                    ? Color
+                    : (Color?)null,
+                Location.X,
+                Location.Y,
+                Radius);
         }
 
         public override bool Contains(Point p)
         {
             return
-                ((Location.X < p.X) && (p.X < Location.X + Radius)) &&
-                ((Location.Y < p.Y) && (p.Y < Location.Y + Radius)); ;
+                ((Location.X < p.X) && (p.X < Location.X + Radius * 2)) &&
+                ((Location.Y < p.Y) && (p.Y < Location.Y + Radius * 2)); ;
         }
 
         public bool HitTest(Circle circle, Point p)

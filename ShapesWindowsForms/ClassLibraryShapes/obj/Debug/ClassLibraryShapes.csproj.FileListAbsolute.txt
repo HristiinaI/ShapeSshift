@@ -1,0 +1,6 @@
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ClassLibraryShapes\bin\Debug\ClassLibraryShapes.dll
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ClassLibraryShapes\bin\Debug\ClassLibraryShapes.pdb
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ClassLibraryShapes\obj\Debug\ClassLibraryShapes.csprojAssemblyReference.cache
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ClassLibraryShapes\obj\Debug\ClassLibraryShapes.csproj.CoreCompileInputs.cache
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ClassLibraryShapes\obj\Debug\ClassLibraryShapes.dll
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ClassLibraryShapes\obj\Debug\ClassLibraryShapes.pdb

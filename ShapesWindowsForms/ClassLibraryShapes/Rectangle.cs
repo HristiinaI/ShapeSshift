@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShapesWindowsForms
+namespace tu.shapes.ClassLibraryShapes
 {
-    class Rectangle : Shape
+    [Serializable]
+    public class Rectangle : Shape
     {
 
         protected override float CalculateSurface()
@@ -20,20 +21,21 @@ namespace ShapesWindowsForms
             return Width * Height;
         }
 
-        public override void Paint(Graphics g)
+        public override void Paint(IGraphics g)
         {
-            var borderColor = Selected
+            var color = Selected
                 ? Color.Red
                 : Color;
 
-            if (Fill)
-            {
-                using (var brush = new SolidBrush(Color))
-                    g.FillRectangle(brush, Location.X, Location.Y, Width, Height);
-            }
-
-            using (var pen = new Pen(borderColor, 3))
-                g.DrawRectangle(pen, Location.X, Location.Y, Width, Height);         
+            g.DrawRectangle(
+                color,
+                Fill
+                    ? Color
+                    : (Color?)null,
+                Location.X,
+                Location.Y,
+                Width,
+                Height);        
         }
 
         public override bool Contains(Point p)
