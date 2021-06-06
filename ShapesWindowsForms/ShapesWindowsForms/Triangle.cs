@@ -18,7 +18,7 @@ namespace ShapesWindowsForms
             return A + B + C;
         }
 
-        protected override float CalculateArea()
+        public override float CalculateArea()
         {
             float halfArea = CalculateSurface() / 2;
             return (float)Math.Sqrt(halfArea * (halfArea - A) * (halfArea - B) 
@@ -36,5 +36,9 @@ namespace ShapesWindowsForms
             return true;
         }
 
+        public override bool Intersets(Shape shape)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

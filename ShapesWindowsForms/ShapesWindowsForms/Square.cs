@@ -9,17 +9,15 @@ namespace ShapesWindowsForms
 {
     class Square : Shape
     {
-        public float A { get; set; }
-
         protected override float CalculateSurface()
         {
-            return 4 * A;
+            return 4 * Height;
 
         }
 
-        protected override float CalculateArea()
+        public override float CalculateArea()
         {
-            return A * A;
+            return Height * Height;
         }
 
         public override void Paint(Graphics g)
@@ -30,27 +28,27 @@ namespace ShapesWindowsForms
                     100,
                     Color);
                 using (var brush = new SolidBrush(fillColor))
-                g.FillRectangle(brush, Location.X, Location.Y, A, A);
+                g.FillRectangle(brush, Location.X, Location.Y, Height, Height);
             }
 
             using (var pen = new Pen(Color, 3))
-                g.DrawRectangle(pen, Location.X, Location.Y, A, A);
+                g.DrawRectangle(pen, Location.X, Location.Y, Height, Height);
         }
 
         public override bool Contains(Point p)
         {
             return
-                Location.X < p.X && p.X < Location.X + A &&
-                Location.Y < p.Y && p.Y < Location.Y + A;
+                Location.X < p.X && p.X < Location.X + Height &&
+                Location.Y < p.Y && p.Y < Location.Y + Height;
         }
 
-        public bool Intersets(Square square)
+        public override bool Intersets(Shape square)
         {
             return
-                    this.Location.X < square.Location.X + square.A &&
-                    square.Location.X < this.Location.X + this.A &&
-                    this.Location.Y < square.Location.Y + square.A &&
-                    square.Location.Y < this.Location.Y + this.A        ;
+                    this.Location.X < square.Location.X + square.Height &&
+                    square.Location.X < this.Location.X + this.Height &&
+                    this.Location.Y < square.Location.Y + square.Height &&
+                    square.Location.Y < this.Location.Y + this.Height        ;
         }
     }
 }

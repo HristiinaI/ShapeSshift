@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +10,13 @@ namespace ShapesWindowsForms
 {
     class Circle : Shape
     {
-        public float Radius { get; set; }
 
         protected override float CalculateSurface()
         {
             return (float)(2 * Math.PI * Radius);
         }
 
-        protected override float CalculateArea()
+        public override float CalculateArea()
         {
             return (float)Math.PI * Radius * Radius;
         }
@@ -43,6 +43,24 @@ namespace ShapesWindowsForms
         public override bool Contains(Point p)
         {
             return true;
+        }
+
+        public bool HitTest(Circle circle, Point p)
+        {
+            var result = false;
+            using (var path = new GraphicsPath())
+            {
+                path.AddEllipse(circle.Location.X, circle.Location.Y, this.Radius * 2, this.Radius * 2);
+                result = path.IsVisible(p);
+            }
+            return result;
+        }
+
+        public override bool Intersets(Shape circle)
+        {
+           return 
+                        Math.Abs(circle.Location.X - Location.X) < circle.Radius &&
+                        Math.Abs(circle.Location.Y - Location.Y) < circle.Radius;
         }
 
 

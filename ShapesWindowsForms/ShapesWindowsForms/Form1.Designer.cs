@@ -36,8 +36,17 @@
             this.buttonCircle = new System.Windows.Forms.Button();
             this.buttonTriangle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelRec = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelSquare = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelCircle = new System.Windows.Forms.ToolStripStatusLabel();
             this.BorderPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BorderPanel
@@ -149,22 +158,86 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelRec});
+            this.statusStrip.Location = new System.Drawing.Point(0, 315);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(741, 22);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "statusStrip";
+            // 
+            // toolStripStatusLabelRec
+            // 
+            this.toolStripStatusLabelRec.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.toolStripStatusLabelRec.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripStatusLabelRec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.toolStripStatusLabelRec.Name = "toolStripStatusLabelRec";
+            this.toolStripStatusLabelRec.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabelRec.Click += new System.EventHandler(this.toolStripStatusLabelRec_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelSquare});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 293);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(741, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelSquare
+            // 
+            this.toolStripStatusLabelSquare.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripStatusLabelSquare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.toolStripStatusLabelSquare.Name = "toolStripStatusLabelSquare";
+            this.toolStripStatusLabelSquare.Size = new System.Drawing.Size(0, 17);
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelCircle});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 271);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(741, 22);
+            this.statusStrip2.TabIndex = 4;
+            this.statusStrip2.Text = "statusStrip2";
+            // 
+            // toolStripStatusLabelCircle
+            // 
+            this.toolStripStatusLabelCircle.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripStatusLabelCircle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.toolStripStatusLabelCircle.Name = "toolStripStatusLabelCircle";
+            this.toolStripStatusLabelCircle.Size = new System.Drawing.Size(0, 17);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(741, 337);
+            this.Controls.Add(this.statusStrip2);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BorderPanel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.BorderPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -178,6 +251,12 @@
         private System.Windows.Forms.Button buttonCircle;
         private System.Windows.Forms.Button buttonTriangle;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRec;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelSquare;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCircle;
     }
 }
 

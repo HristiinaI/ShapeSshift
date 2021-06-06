@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,10 @@ namespace ShapesWindowsForms
         private bool _captureMouse;
         private Point _captureLocation;
         private Shape _frame;
+
+        private float areaRectangle = 0;
+        private float areaSquare = 0;
+        private float areaCircle = 0;
 
         private Boolean isItTriangle = false;
         private Boolean isItCircle = false;
@@ -126,7 +131,7 @@ namespace ShapesWindowsForms
                 Location = new Point(
                     Math.Min(_captureLocation.X, location.X),
                     Math.Min(_captureLocation.Y, location.Y)),
-                A =
+                Height =
                     Math.Abs(_captureLocation.X - location.X),
                 
             };
@@ -170,7 +175,7 @@ namespace ShapesWindowsForms
                 _frame = CreateFrameRectangle(e.Location);
                 _frame.Fill = false;
                 _frame.Color = Color.LightGray;
-                foreach (Rectangle rectangle in _shapes)
+                foreach (Shape rectangle in _shapes)
                     rectangle.Color = rectangle.Intersets(CreateFrameRectangle(e.Location))
                         ? Color.Red
                         : Color.Blue;
@@ -182,6 +187,10 @@ namespace ShapesWindowsForms
                 _frame = CreateFrameSquare(e.Location);
                 _frame.Fill = false;
                 _frame.Color = Color.LightGray;
+                foreach (Shape square in _shapes)
+                    square.Color = square.Intersets(CreateFrameSquare(e.Location))
+                        ? Color.Red
+                        : Color.Blue;
             }
             else if (isItTriangle)
             {
@@ -196,11 +205,31 @@ namespace ShapesWindowsForms
                 _frame = CreateFrameCircle(e.Location);
                 _frame.Fill = false;
                 _frame.Color = Color.LightGray;
+                foreach (Shape circle in _shapes)
+                    circle.Color = circle.Intersets(CreateFrameCircle(e.Location))
+                        ? Color.Red
+                        : Color.Blue;  
             }
 
              
             Invalidate();
 
+        }
+
+        private void RefreshArea()
+        {
+            
+            foreach (var shape in _shapes)
+                if (isItRectangle)
+                    areaRectangle += shape;
+                else if (isItSquare)
+                    areaSquare += shape;
+                else if (isItCircle)
+                    areaCircle += shape;
+
+            toolStripStatusLabelRec.Text = "RectangleArea: " + areaRectangle.ToString();
+            toolStripStatusLabelSquare.Text = "SquareArea: " + areaSquare.ToString();
+            toolStripStatusLabelCircle.Text = "CircleArea: " + areaCircle.ToString();
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
@@ -218,7 +247,24 @@ namespace ShapesWindowsForms
             _frame = null;
             _captureMouse = false;
 
+            RefreshArea();
             Invalidate();        
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Delete)
+                return;
+
+            for (int i = _shapes.Count - 1; i >= 0 ; i--)
+                if (_shapes[i].Color == Color.Red)
+                    _shapes.RemoveAt(i);
+            Invalidate();
+        }
+
+        private void toolStripStatusLabelRec_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

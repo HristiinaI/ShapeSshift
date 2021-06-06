@@ -9,15 +9,13 @@ namespace ShapesWindowsForms
 {
     class Rectangle : Shape
     {
-        public float Width { get; set; }
-        public float Height { get; set; }
 
         protected override float CalculateSurface()
         {
             return (2 * Width) + (2 * Height);
         }
 
-        protected override float CalculateArea()
+        public override float CalculateArea()
         {
             return Width * Height;
         }
@@ -45,7 +43,7 @@ namespace ShapesWindowsForms
                 ((Location.Y < p.Y) && (p.Y < Location.Y + Height));
         }
 
-        public bool Intersets(Rectangle rectengle)
+        public override bool Intersets(Shape rectengle)
         {
             return
                     this.Location.X < rectengle.Location.X + rectengle.Width &&
