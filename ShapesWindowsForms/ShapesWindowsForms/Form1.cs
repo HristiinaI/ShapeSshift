@@ -39,8 +39,8 @@ namespace ShapesWindowsForms
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            foreach (var shape in _shapes)
-                shape.Paint(e.Graphics);
+            for(int i = _shapes.Count - 1; i >= 0; i--)
+                _shapes[i].Paint(e.Graphics);
 
             if (_captureMouse && _frame != null)
                 _frame.Paint(e.Graphics);
@@ -102,7 +102,13 @@ namespace ShapesWindowsForms
             _captureLocation = e.Location;
 
             foreach (var shape in _shapes)
-                shape.Color = Color.Blue; 
+                shape.Selected = false; 
+            foreach(var shape in _shapes)
+                if (shape.Contains(e.Location))
+                {
+                    shape.Selected = true;
+                    break;
+                }
 
             Invalidate();
 
@@ -176,9 +182,7 @@ namespace ShapesWindowsForms
                 _frame.Fill = false;
                 _frame.Color = Color.LightGray;
                 foreach (Shape rectangle in _shapes)
-                    rectangle.Color = rectangle.Intersets(CreateFrameRectangle(e.Location))
-                        ? Color.Red
-                        : Color.Blue;
+                    rectangle.Selected = rectangle.Intersets(_frame);
 
             }
             else if (isItSquare)
@@ -188,9 +192,8 @@ namespace ShapesWindowsForms
                 _frame.Fill = false;
                 _frame.Color = Color.LightGray;
                 foreach (Shape square in _shapes)
-                    square.Color = square.Intersets(CreateFrameSquare(e.Location))
-                        ? Color.Red
-                        : Color.Blue;
+                    square.Selected = square.Intersets(_frame);
+                        
             }
             else if (isItTriangle)
             {
@@ -206,9 +209,7 @@ namespace ShapesWindowsForms
                 _frame.Fill = false;
                 _frame.Color = Color.LightGray;
                 foreach (Shape circle in _shapes)
-                    circle.Color = circle.Intersets(CreateFrameCircle(e.Location))
-                        ? Color.Red
-                        : Color.Blue;  
+                    circle.Selected = circle.Intersets(_frame); 
             }
 
              
@@ -239,9 +240,10 @@ namespace ShapesWindowsForms
             if (e.Button == MouseButtons.Right)
             {
                 _frame.Fill = true;
-                _frame.Color = Color.Red;
+                _frame.Selected = true;
+                _frame.Color = Color.Blue;
 
-                _shapes.Add(_frame);
+                _shapes.Insert(0, _frame);
             }
 
             _frame = null;
@@ -257,14 +259,64 @@ namespace ShapesWindowsForms
                 return;
 
             for (int i = _shapes.Count - 1; i >= 0 ; i--)
-                if (_shapes[i].Color == Color.Red)
+                if (_shapes[i].Selected)
                     _shapes.RemoveAt(i);
+
+            RefreshArea();
             Invalidate();
         }
+
+        
 
         private void toolStripStatusLabelRec_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_DoubleClick(object sender, EventArgs e)
+        {
+            foreach (var shape in _shapes)
+            {
+                if (shape.Selected)
+                {
+                    if (isItRectangle)
+                    {
+                        var fr = new FormRectangleChange();
+                        fr.Height = shape.Height;
+                        fr.Width = shape.Width;
+                        if(fr.ShowDialog() == DialogResult.OK)
+                        {
+                            shape.Height = fr.Height;
+                            shape.Width = fr.Width;
+                        }
+                        break;
+
+                    }
+                    else if (isItSquare)
+                    {
+                        var fs = new FormSquareChange();
+                        fs.Height = shape.Height;
+                        fs.Width = shape.Width;
+                        if (fs.ShowDialog() == DialogResult.OK)
+                        {
+                            shape.Height = fs.Height;
+                            shape.Width = fs.Width;
+                        }
+                        break;
+                    }
+                    else if (isItCircle)
+                    {
+                        var fc = new FormCircleChange();
+                        fc.Radius = shape.Radius;
+                        if (fc.ShowDialog() == DialogResult.OK)
+                        {
+                            shape.Radius = fc.Radius;
+                        }
+                        break;
+                    }
+                }
+
+            }
         }
     }
 }

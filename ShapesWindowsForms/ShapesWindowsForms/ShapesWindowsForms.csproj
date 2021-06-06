@@ -53,6 +53,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCircleChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCircleChange.Designer.cs">
+      <DependentUpon>FormCircleChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRectangleChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRectangleChange.Designer.cs">
+      <DependentUpon>FormRectangleChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSquareChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSquareChange.Designer.cs">
+      <DependentUpon>FormSquareChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rectangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +79,15 @@
     <Compile Include="Triangle.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCircleChange.resx">
+      <DependentUpon>FormCircleChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRectangleChange.resx">
+      <DependentUpon>FormRectangleChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSquareChange.resx">
+      <DependentUpon>FormSquareChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -20,6 +20,8 @@ namespace ShapesWindowsForms
 
         public bool Fill { get; set; } = true;
 
+        public bool Selected { get; set; }
+
         protected abstract float CalculateSurface();
 
         public abstract float CalculateArea();

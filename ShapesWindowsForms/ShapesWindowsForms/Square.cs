@@ -22,16 +22,16 @@ namespace ShapesWindowsForms
 
         public override void Paint(Graphics g)
         {
+            var borderColor = Selected
+                ? Color.Red
+                : Color;
             if (Fill)
             {
-                var fillColor = Color.FromArgb(
-                    100,
-                    Color);
-                using (var brush = new SolidBrush(fillColor))
+                using (var brush = new SolidBrush(Color))
                 g.FillRectangle(brush, Location.X, Location.Y, Height, Height);
             }
 
-            using (var pen = new Pen(Color, 3))
+            using (var pen = new Pen(borderColor, 3))
                 g.DrawRectangle(pen, Location.X, Location.Y, Height, Height);
         }
 

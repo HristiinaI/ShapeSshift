@@ -23,17 +23,17 @@ namespace ShapesWindowsForms
 
         public override void Paint(Graphics g)
         {
+            var borderColor = Selected
+                ? Color.Red
+                : Color;
             if (Fill)
             {
-                var fillColor = Color.FromArgb(
-                    100,
-                    Color);
-                using (var brush = new SolidBrush(fillColor))
+                using (var brush = new SolidBrush(Color))
                     g.FillEllipse(brush, Location.X, Location.Y,
                          Radius + Radius, Radius + Radius);
             }
 
-            using (var pen = new Pen(Color, 3))
+            using (var pen = new Pen(borderColor, 3))
             {
                 g.DrawEllipse(pen, Location.X, Location.Y,
                      Radius + Radius, Radius + Radius);
@@ -42,7 +42,9 @@ namespace ShapesWindowsForms
 
         public override bool Contains(Point p)
         {
-            return true;
+            return
+                ((Location.X < p.X) && (p.X < Location.X + Radius)) &&
+                ((Location.Y < p.Y) && (p.Y < Location.Y + Radius)); ;
         }
 
         public bool HitTest(Circle circle, Point p)

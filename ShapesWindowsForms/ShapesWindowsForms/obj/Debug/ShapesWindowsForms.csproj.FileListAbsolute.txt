@@ -18,3 +18,6 @@ C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesW
 C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\bin\Debug\ShapesWindowsForms.exe.config
 C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\bin\Debug\ShapesWindowsForms.exe
 C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\bin\Debug\ShapesWindowsForms.pdb
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\obj\Debug\ShapesWindowsForms.FormCircleChange.resources
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\obj\Debug\ShapesWindowsForms.FormRectangleChange.resources
+C:\Users\Hristina\Desktop\University\Kursov-Proekt-OOP\etap3\ShapeSshift\ShapesWindowsForms\ShapesWindowsForms\obj\Debug\ShapesWindowsForms.FormSquareChange.resources
